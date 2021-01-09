@@ -1,0 +1,439 @@
+extends layout
+block content
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    style.
+      p{
+      font-family: Arial, Helvetica, sans-serif;
+      color: #444e81;
+      font-size: 15px;
+      text-align:center;
+      }
+      h1{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 35px;
+      }
+      h2{
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffbfbc;
+      font-weight: bold;
+      font-size: 15px;
+      }
+      .overlay {
+      /* Height & width depends on how you want to reveal the overlay (see JS below) */
+      height: 93%;
+      width: 0;
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      bottom: 0;
+      background-color: rgb(255,255,255); /* Black fallback color */
+      background-color: rgba(255,255,255, 1); /* Black w/opacity */
+      overflow-x: hidden; /* Disable horizontal scroll */
+      transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+      }
+      /* Position the content inside the overlay */
+      .overlay-content {
+      position: relative;
+      top: 5%; /* 25% from the top */
+      width: 95%; /* 100% width */
+      text-align: right; /* Right-aligned text/links */
+      margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+      }
+      /* The navigation links inside the overlay */
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #898faf;
+      display: block; /* Display block instead of inline */
+      transition: 0.3s; /* Transition effects on hover (color) */
+      }
+      /* When you mouse over the navigation links, change their color */
+      .overlay a:hover, .overlay a:focus {
+      color: #ffbfbc; !important
+      }
+      .title_header a{
+      text-decoration:none;
+      color: #898faf;
+      transition: 0.3s;
+      }
+      .title_header a:hover, .title_header a:focus{
+      color: #ffbfbc; !important
+      }
+      /* navbar tweaking */
+      .navbar{
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px #EEE;
+      }
+      hr{
+      border: 0;
+      clear:both;
+      display:block;
+      height: 3px;
+      background-color: #ffbfbc;
+      }
+      #qtpie{
+      position:relative;
+      top:25%;
+      width: 200px;
+      margin-top: 30px;
+      }
+      input[type=text]{
+      border: none;
+      border-bottom: 2px solid #898FAF;
+      width: 100%;
+      outline: none;
+      margin: 30px 0;
+      }
+      ::placeholder{
+      font-weight:600;
+      color: #ffbfbc;
+      font-size: 20px;
+      }
+      #submit{
+      background-color: #898faf;
+      border: none;
+      color:white;
+      display: inline-block;
+      font-size; 20px;
+      font-weight: 600;
+      float: right;
+      padding: 7px 25px;
+      }
+      .instagram{
+      width: 50px;
+      height: 50px;
+      background: url("/images/grayInstagram.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow:hidden;
+      text-indent: 100%
+      }
+      .instagram:hover{
+      background: url("/images/coloredInstagram.png") no-repeat;
+      background-size: contain;
+      }
+      .twitter{
+      width: 50px;
+      height: 50px;
+      background: url("/images/grayTwitter.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow:hidden;
+      text-indent: 100%
+      }
+      .twitter:hover{
+      background: url("/images/coloredTwitter.png") no-repeat;
+      background-size: contain;
+      }
+      .in{
+      width: 30px;
+      height: 30px;
+      background: url("/images/grayLinkedIn.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow: hidden;
+      text-indent: 100%;
+      margin-bottom: 10px;
+      }
+      .in:hover{
+      background: url("/images/coloredLinkedIn.png") no-repeat;
+      background-size: contain;
+      }
+      .fb{
+      width: 30px;
+      height: 30px;
+      background: url("/images/grayFacebook.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow: hidden;
+      text-indent: 100%;
+      margin-bottom: 10px;
+      }
+      .fb:hover{
+      background: url("/images/coloredFacebook.png") no-repeat;
+      background-size: contain;
+      }
+      .gram{
+      width: 30px;
+      height: 30px;
+      background: url("/images/grayInstagram.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow: hidden;
+      text-indent: 100%
+      }
+      .gram:hover{
+      background: url("/images/coloredInstagram.png") no-repeat;
+      background-size: contain;
+      }
+      .photo{
+      border-radius: 50%;
+      display:block;
+      overflow: hidden;
+      text-indent: 100%;
+      white-space:nowrap;
+      }
+      .column{
+      max-width: 306px;
+      }
+      .profile{
+      border-radius: 50%;
+      height:auto;
+      width: auto;
+      max-width: 70%;
+      display:block;
+      margin: auto;
+      }
+      .bio{
+      min-height: 290px;
+      width: auto;
+      position: relative;
+      }
+      .bottom-bor{
+      width: 100%;
+      border-bottom: 2px solid #ffbfbc;
+      }
+      /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+      @media screen and (max-height: 450px) {
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+    title About Us
+  body
+    #head-bar
+      nav.navbar.navbar-default
+        .title_header
+          a(href='/')
+            ul.list-group.list-group-horizontal.mr-4(style='list-style-type: none; padding-top: 5px')
+              li(style='padding-left:1em')
+                img(src='/images/penguin_happy.png', width='35.19', height='80%')
+              li(style='padding-right:2em; padding-left: 1em; ')
+                h1(style='text-decoration: none; font-family: sans-serif; font-size: 30px; color:') Pengu Fit
+        .ml-auto
+          ul.list-group.list-group-horizontal.mr-4(style='list-style-type: none;')
+            li
+              .instagram
+                // consider multiple classes?
+                a#instagram.photo(href='https://www.instagram.com/teampainpoints/?hl=en', title='photo')
+                  h1(style='font-size: 90px;') photo
+            // twitter
+            div(style='width: 20px;')
+            li
+              .twitter
+                // consider multiple classes?
+                a#twitter.photo(href='https://twitter.com/teampainpoints', title='photo')
+                  h1(style='font-size: 90px;') photo
+            // hamburger
+            // menu
+            div(style='width: 20px;')
+            #menu-item(style='height: 100%')
+              a(href='javascript:void(0)', onclick='open_close_Nav()')
+                img(style='height: auto; width: auto; max-height: 30px;', src='/images/blueHamburger.png')
+      // END OF HEADER
+      // The overlay
+      #myNav.overlay
+        // Overlay content
+        .overlay-content(style='font-family: Helvetica; font-size: 50px; ')
+          a(href='/')
+            h1(style='font-family: Helvetica; font-size: 50px; ') App Overview
+          a(href='/alpha_access')
+            h1(style='font-family: Helvetica; font-size: 50px; ') Alpha Access
+          a(href='/about_us')
+            h1(style='font-family: Helvetica; font-size: 50px; ') About Us
+          a(href='/contact_us')
+            h1(style='font-family: Helvetica; font-size: 50px; ') Contact Us
+        img#qtpie(src='/images/backpack_boy.png')
+      // BODY REALLY STARTS HERE
+      // header padding
+      div(style='height: 60px')
+      #header_box(style='width: 60%; margin: auto;')
+        // title
+        div
+          h1(style='color:#898faf; font-size: 60px; position: relative; text-align:center;') About Us
+          hr(width='30%', align='center')
+        // padding
+        div(style='height: 30px;')  
+        // paragraph text
+        div
+          p
+            | Team Pain Points was born out of the desire to combat a foe that plagues most of the population: lack of motivation. We want to focus specifically on fitness because this is an area where we know well. While we are not experts in the field of sports science, we have been through the struggle to track our meals, go to the gym, and exercise consistently.
+          p
+            | Thus, Pengu Fit was born. We mix gamification elements with practical health tools to aid users in their fitness journey, whatever that will be. Join us on our journey, and maybe you will have some fun along the way. (:
+      div(style='height: 70px;')
+      #meet-the-team(style='width: 60%; margin: auto;')
+        div
+          h1(style='color:#898faf; font-size: 60px; position: relative; text-align:center;') Meet The Team
+          hr(width='40%', align='center')
+        // padding
+        div(style='height: 30px;')  
+      // team profiles
+      #container-fluid
+        // this class centers content in rows
+        .row.justify-content-center
+          .row(style='column-gap: 30px;')
+            // filler column
+            #one.column
+              #bryan
+                div
+                  img.profile(src='/images/bryan_song.jpg')
+                .bio
+                  h1 Bryan Song
+                  h2 Co-Founder + Lead Software Engineer
+                  p(style='text-align: left;')
+                    | Bryan co-founded Team Pain Points to gather a group of dedicated individuals passionate about helping people achieve their goals.
+                  p(style='text-align: left;')
+                    | Bryan has taken lead of project management,  specializing in Computer Science and Software Engineering.
+                .bottom-bor
+                  .in
+                    // consider multiple classes?
+                    a.photo(href='https://www.linkedin.com/in/bryanesong/', title='photo')
+                      h1(style='font-size: 90px;') photo
+            #two.column
+              #jordan
+                div
+                  img.profile(src='/images/jordan_lam.jpg')
+                .bio
+                  h1 Jordan Lam
+                  h2 Co-Founder + UX lead
+                  p(style='text-align: left;')
+                    | Jordan understands firsthand how difficult it is to set and maintain goals. He is driven to create a product that will motivate people (including himself) to meet their fitness goals.
+                  p(style='text-align: left;')
+                    | Jordan specializes in UX Research, and is in charge of website development and app design. Additional duties include storyboarding and deadline
+                .bottom-bor
+                  .in
+                    // consider multiple classes?
+                    a.photo(href='https://www.linkedin.com/in/jordanklam', title='LinkedIn')
+                      h1(style='font-size: 90px;') photo
+            #three.column
+              #evan
+                div
+                  img.profile(src='/images/evan_lam.jpg')
+                .bio
+                  h1 Evan Lam
+                  h2 Software Engineer
+                  p(style='text-align: left;')
+                    | While most tend to shy away from adversity, Evan embraces it. Entering his senior year in high school, Evan is undaunted by the prospect of learning app development from scratch.
+                  p(style='text-align: left;')
+                    | Evan specializes in Software Development, and is primarily responsible for Flutter and Android Studio development.
+                .bottom-bor
+                  .fb
+                    a.photo(href='https://www.facebook.com/profile.php?id=100011715295680', title='Facebook')
+                      h1(style='font-size: 90px;') photo
+            #FOUR.column
+              #shayla
+                div
+                  img.profile(src='/images/shayla_dang.jpg')
+                .bio
+                  h1 Shayla Dang
+                  h2 Graphic Design Lead
+                  p(style='text-align: left;')
+                    | Our energetic design lead, Shayla is the artist that brings the app to life through her illustrations and creative vision.
+                  p(style='text-align: left;')
+                    | Shayla specializes in animation, painting and drawing. She is responsible for creating all of the art in the application, generating the characters, backgrounds, layouts and cosmetics.
+                .bottom-bor
+                  .in
+                    // consider multiple classes?
+                    a.photo(href='https://www.linkedin.com/in/shayla-d-00a31a19a/', title='LinkedIn')
+                      h1(style='font-size: 90px;') photo
+      // spacing
+      .container-fluid
+        div(style='height: 50px;')  
+        .row.justify-content-center
+          .row(style='column-gap: 30px;')
+            // filler column
+            #five.column
+              #michael
+                div
+                  img.profile(src='/images/michael_krantz.png')
+                .bio
+                  h1 Michael Krantz
+                  h2 Storyboard Lead
+                  p(style='text-align: left;')
+                    | Like many English majors, Michael has to look for creative ways to express his skills in a unique way. He wants to test himself by crafting a simple yet engaging story to follow.
+                  p(style='text-align: left;')
+                    | Michael is the lead for storyboarding and theme development.
+                .bottom-bor
+                  .gram(style='margin-bottom: 10px;')
+                    // consider multiple classes?
+                    a.photo(href='https://www.instagram.com/michael.krantz.14/?hl=en', title='photo')
+                      h1(style='font-size: 90px;') photo
+            #six.column
+              #david
+                div
+                  img.profile(src='/images/david_yip.png')
+                .bio
+                  h1 David Yip
+                  h2 Creative Designer
+                  p(style='text-align: left;')
+                    | Ever the innovator, David is always searching for a creative outlet. This project is a perfect opportunity for him to hone his skills.
+                  p(style='text-align: left;')
+                    | David is in charge of our social media accounts, recording critical meeting points, and keeping outhers accountable for deadlines.
+                .bottom-bor
+                  .gram(style='margin-bottom: 10px;')
+                    // consider multiple classes?
+                    a.photo(href='https://www.instagram.com/dyip1782/?hl=en', title='Instagram')
+                      h1(style='font-size: 90px;') photo
+            #seven.column
+              #superdev
+                div
+                  img.profile(src='/images/evan_lam.jpg')
+                .bio
+                  h1 Superdev?
+                  h2 Software Engineer
+                  p(style='text-align: left;')
+                    | While most tend to shy away from adversity, Evan embraces it. Entering his senior year in high school, Evan is undaunted by the prospect of learning app development from scratch.
+                  p(style='text-align: left;')
+                    | Evan specializes in Software Development, and is primarily responsible for Flutter and Android Studio development.
+                .fb
+                  a.photo(href='https://www.facebook.com/profile.php?id=100011715295680', title='Facebook')
+                    h1(style='font-size: 90px;') photo
+            #eight.column
+              #edwin
+                div
+                  img.profile(src='/images/shayla_dang.jpg')
+                .bio
+                  h1 Edwin Ng
+                  h2 Graphic Design Lead
+                  p(style='text-align: left;')
+                    | Our energetic design lead, Shayla is the artist that brings the app to life through her illustrations and creative vision.
+                  p(style='text-align: left;')
+                    | Shayla specializes in animation, painting and drawing. She is responsible for creating all of the art in the application, generating the characters, backgrounds, layouts and cosmetics.
+                .in
+                  // consider multiple classes?
+                  a.photo(href='https://www.linkedin.com/in/shayla-d-00a31a19a/', title='LinkedIn')
+                    h1(style='font-size: 90px;') photo
+      script.
+        /* Open when someone clicks on the span element */
+        var state="";
+        function echo(){
+        alert("hello");
+        }
+        function open_close_Nav(){
+        var width = document.getElementById("myNav").style.width;
+        if (width=="100%") {
+        document.getElementById("myNav").style.width = "0%";
+        }else {
+        document.getElementById("myNav").style.width = "100%";
+        }
+        }
+        function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+        }
+        /* Close when someone clicks on the "x" symbol inside the overlay */
+        function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+        }
+      script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+      script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN', crossorigin='anonymous')
+      script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV', crossorigin='anonymous')

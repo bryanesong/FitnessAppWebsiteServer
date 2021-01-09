@@ -1,0 +1,244 @@
+extends layout
+block content
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    style.
+      p{
+      font-family: Arial, Helvetica, sans-serif;
+      color: #444e81;
+      font-size: 20px;
+      text-align:center;
+      }
+      h1{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      }
+      .overlay {
+      /* Height & width depends on how you want to reveal the overlay (see JS below) */
+      height: 93%;
+      width: 0;
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      bottom: 0;
+      background-color: rgb(255,255,255); /* Black fallback color */
+      background-color: rgba(255,255,255, 1); /* Black w/opacity */
+      overflow-x: hidden; /* Disable horizontal scroll */
+      transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+      }
+      /* Position the content inside the overlay */
+      .overlay-content {
+      position: relative;
+      top: 5%; /* 25% from the top */
+      width: 95%; /* 100% width */
+      text-align: right; /* Right-aligned text/links */
+      margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+      }
+      /* The navigation links inside the overlay */
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #898faf;
+      display: block; /* Display block instead of inline */
+      transition: 0.3s; /* Transition effects on hover (color) */
+      }
+      /* When you mouse over the navigation links, change their color */
+      .overlay a:hover, .overlay a:focus {
+      color: #ffbfbc; !important
+      }
+      .title_header a{
+      text-decoration:none;
+      color: #898faf;
+      transition: 0.3s;
+      }
+      .title_header a:hover, .title_header a:focus{
+      color: #ffbfbc; !important
+      }
+      /* navbar tweaking */
+      .navbar{
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px #EEE;
+      }
+      hr{
+      border: 0;
+      clear:both;
+      display:block;
+      height: 3px;
+      background-color: #ffbfbc;
+      }
+      #pengu{
+      position:relative;
+      top:25%;
+      width: 200px;
+      margin-top: 30px;
+      }
+      input[type=text]{
+      border: none;
+      border-bottom: 2px solid #898FAF;
+      width: 100%;
+      outline: none;
+      margin: 30px 0;
+      }
+      ::placeholder{
+      font-weight:600;
+      color: #ffbfbc;
+      font-size: 20px;
+      }
+      #btnAddUser{
+      background-color: #898faf;
+      border: none;
+      color:white;
+      display: inline-block;
+      font-size; 20px;
+      font-weight: 600;
+      float: right;
+      padding: 7px 25px;
+      }
+      .instagram{
+      width: 50px;
+      height: 50px;
+      background: url("/images/grayInstagram.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow:hidden;
+      text-indent: 100%
+      }
+      .instagram:hover{
+      background: url("/images/coloredInstagram.png") no-repeat;
+      background-size: contain;
+      }
+      .twitter{
+      width: 50px;
+      height: 50px;
+      background: url("/images/grayTwitter.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow:hidden;
+      text-indent: 100%
+      }
+      .twitter:hover{
+      background: url("/images/coloredTwitter.png") no-repeat;
+      background-size: contain;
+      }
+      .photo{
+      border-radius: 50%;
+      display:block;
+      overflow: hidden;
+      text-indent: 100%;
+      white-space:nowrap;
+      }
+      img{
+      position: relative;
+      bottom: 0;
+      }
+      /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+      @media screen and (max-height: 450px) {
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+    title Alpha Access
+  body
+    #head-bar
+      nav.navbar.navbar-default
+        .title_header
+          a(href='/')
+            ul.list-group.list-group-horizontal.mr-4(style='list-style-type: none; padding-top: 5px')
+              li(style='padding-left:1em')
+                img(src='/images/penguin_happy.png', width='35.19', height='80%')
+              li(style='padding-right:2em; padding-left: 1em; ')
+                h1(style='text-decoration: none; font-family: sans-serif; font-size: 30px; color:') Pengu Fit
+        .ml-auto
+          ul.list-group.list-group-horizontal.mr-4(style='list-style-type: none;')
+            li
+              .instagram
+                // consider multiple classes?
+                a#instagram.photo(href='https://www.instagram.com/teampainpoints/?hl=en', title='photo')
+                  h1(style='font-size: 90px;') photo
+            // twitter
+            div(style='width: 20px;')
+            li
+              .twitter
+                // consider multiple classes?
+                a#twitter.photo(href='https://twitter.com/teampainpoints', title='photo')
+                  h1(style='font-size: 90px;') photo
+            // hamburger
+            // menu
+            div(style='width: 20px;')
+            #menu-item(style='height: 100%')
+              a(href='javascript:void(0)', onclick='open_close_Nav()')
+                img(style='height: auto; width: auto; max-height: 30px;', src='/images/blueHamburger.png')
+      // END OF HEADER
+      // The overlay
+      #myNav.overlay
+        // Overlay content
+        .overlay-content(style='font-family: Helvetica; font-size: 50px; ')
+          a(href='/')
+            h1(style='font-family: Helvetica; font-size: 50px; ') App Overview
+          a(href='/alpha_access')
+            h1(style='font-family: Helvetica; font-size: 50px; ') Alpha Access
+          a(href='/about_us')
+            h1(style='font-family: Helvetica; font-size: 50px; ') About Us
+          a(href='contact_us')
+            h1(style='font-family: Helvetica; font-size: 50px; ') Contact Us
+        img#pengu(src='/images/backpack_boy.png')
+      // BODY REALLY STARTS HERE
+      // header padding
+      div(style='height: 60px')
+      #header_box(style='width: 50%; margin: auto;')
+        // title
+        div
+          h1(style='color:#898faf; font-size: 45px; position: relative; text-align:center;') Alpha Access
+          hr(width='30%', align='center')
+        // padding
+        div(style='height: 30px;')  
+        // paragraph text
+        div
+          p
+            | Enter in your email address of choice along with a username to recieve an alpha code that can be used to access our app before its general release! Feel free to reach out us via the Contact Us page if you have any questions.
+        #addUser
+          fieldset
+            input#inputUserName(type='text', placeholder='Username')
+            input#inputUserEmail(type='text', placeholder='Email')
+            button#btnAddUser Sign Me Up!
+      div(style='height: 80px;')
+      .row(style='height: 300px; width: 100%')
+        .column(style='width: 25%')
+        .column(style='float:left; width: 20%')
+          img(src='/images/pengu_shadow.png', height='200px;', margin='auto;')
+        .column(style='width: 20%')
+        .column(style='float: left; width: 20%')
+          img(src='/images/pongu_shadow.png', height='150px;')
+      script.
+        /* Open when someone clicks on the span element */
+        var state="";
+        function echo(){
+        	alert("hello");
+        }
+        function open_close_Nav(){
+        var width = document.getElementById("myNav").style.width;
+        if (width=="100%") {
+        document.getElementById("myNav").style.width = "0%";
+        }else {
+        document.getElementById("myNav").style.width = "100%";
+        }
+        }
+        function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+        }
+        /* Close when someone clicks on the "x" symbol inside the overlay */
+        function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+        }
+      script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+      script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN', crossorigin='anonymous')
+      script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV', crossorigin='anonymous')

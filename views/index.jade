@@ -1,0 +1,269 @@
+doctype html
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    style.
+      p{
+      font-family: Arial, Helvetica, sans-serif;
+      color: #898faf;
+      font-size: 15px;
+      text-align:center;
+      }
+      h1{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      }
+      .overlay {
+      /* Height & width depends on how you want to reveal the overlay (see JS below) */
+      height: 93%;
+      width: 0;
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      bottom: 0;
+      background-color: rgb(255,255,255); /* Black fallback color */
+      background-color: rgba(255,255,255, 1); /* Black w/opacity */
+      overflow-x: hidden; /* Disable horizontal scroll */
+      transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+      }
+      /* Position the content inside the overlay */
+      .overlay-content {
+      position: relative;
+      top: 5%; /* 25% from the top */
+      width: 95%; /* 100% width */
+      text-align: right; /* Right-aligned text/links */
+      margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+      }
+      /* The navigation links inside the overlay */
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #898faf;
+      display: block; /* Display block instead of inline */
+      transition: 0.3s; /* Transition effects on hover (color) */
+      }
+      /* When you mouse over the navigation links, change their color */
+      .overlay a:hover, .overlay a:focus {
+      color: #ffbfbc; !important
+      }
+      .title_header a{
+      text-decoration:none;
+      color: #898faf;
+      transition: 0.3s;
+      }
+      .title_header a:hover, .title_header a:focus{
+      color: #ffbfbc; !important
+      }
+      /* navbar tweaking */
+      .navbar{
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px #EEE;
+      }
+      hr{
+      border: 0;
+      clear:both;
+      display:block;
+      height: 3px;
+      background-color: #ffbfbc;
+      }
+      #qtpie{
+      position:relative;
+      top:25%;
+      width: 200px;
+      margin-top: 30px;
+      }
+      .instagram{
+      width: 50px;
+      height: 50px;
+      background: url("/images/grayInstagram.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow:hidden;
+      text-indent: 100%
+      }
+      .instagram:hover{
+      background: url("/images/coloredInstagram.png") no-repeat;
+      background-size: contain;
+      }
+      .twitter{
+      width: 50px;
+      height: 50px;
+      background: url("/images/grayTwitter.png") no-repeat;
+      display: block;
+      background-size: contain;
+      overflow:hidden;
+      text-indent: 100%
+      }
+      .twitter:hover{
+      background: url("/images/coloredTwitter.png") no-repeat;
+      background-size: contain;
+      }
+      .photo{
+      border-radius: 50%;
+      display:block;
+      overflow: hidden;
+      text-indent: 100%;
+      white-space:nowrap;
+      }
+      .wrapper{
+      position: relative;
+      overflow: hidden;
+      width: 400px;
+      height: 276px;
+      border: 1px  black;
+      }
+      #slide{
+      position: absolute;
+      right: -45%;
+      width: 300 px;
+      height: 276 px;
+      background: none;
+      transition: 1s;
+      }
+      .wrapper:hover #slide{
+      transition: 1s;
+      right: 0;
+      }
+      /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+      @media screen and (max-height: 450px) {
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+    title Menu
+  // HEADER
+  body
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    script(src='/javascripts/global.js')
+    #head-bar
+      nav.navbar.navbar-default
+        .title_header
+          a(href='/')
+            ul.list-group.list-group-horizontal.mr-4(style='list-style-type: none; padding-top: 5px')
+              li(style='padding-left:1em')
+                img(src='/images/penguin_happy.png', width='35.19', height='80%')
+              li(style='padding-right:2em; padding-left: 1em; ')
+                h1(style='text-decoration: none; font-family: sans-serif; font-size: 30px; color:') Pengu Fit
+        .ml-auto
+          ul.list-group.list-group-horizontal.mr-4(style='list-style-type: none;')
+            li
+              .instagram
+                // consider multiple classes?
+                a#instagram.photo(href='https://www.instagram.com/teampainpoints/?hl=en', title='photo')
+                  h1(style='font-size: 90px;') photo
+            // twitter
+            div(style='width: 20px;')
+            li
+              .twitter
+                // consider multiple classes?
+                a#twitter.photo(href='https://twitter.com/teampainpoints', title='photo')
+                  h1(style='font-size: 90px;') photo
+            // hamburger
+            // menu
+            div(style='width: 20px;')
+            #menu-item(style='height: 100%')
+              a(href='javascript:void(0)', onclick='open_close_Nav()')
+                img(style='height: auto; width: auto; max-height: 30px;', src='/images/blueHamburger.png')
+      // END OF HEADER
+      // The overlay
+      #myNav.overlay
+        // Overlay content
+        .overlay-content(style='font-family: Helvetica; font-size: 50px; ')
+          a(href='/')
+            h1(style='font-family: Helvetica; font-size: 50px; ') App Overview
+          a(href='/alpha_access')
+            h1(style='font-family: Helvetica; font-size: 50px; ') Alpha Access
+          a(href='/about_us')
+            h1(style='font-family: Helvetica; font-size: 50px; ') About Us
+          a(href='/contact_us')
+            h1(style='font-family: Helvetica; font-size: 50px; ') Contact Us
+        img#qtpie(src='/images/backpack_boy.png')
+      // BODY REALLY STARTS HERE
+      // 
+      #index_head_container.column(style='float-left')
+        div(style='height:20px;')
+        #index_head_head(style='width:40%; margin:auto; text-align:center;')
+          h1(style='color:#898faf; font-size: 40px; position: relative; text-align:center;') Welcome!
+        #index_head_body(style='width: 30%; margin:auto; text-align: center;')
+          p(style='font-size: 13pt;')
+            | Pengu Fit is an app that aids users in their fitness journey by providing a fun way to keep the user accountable. Accompany Pengu and little Pongu on their quest to explore the world and aid them by meeting your own personal fitness goals!
+        #index_head_underline.underline
+          // must be pink
+          hr(width='35%', align='center')
+      // columns
+      div(style='height:30px;')
+      .row
+        // 10% padding
+        .column(style='width:20%')
+        // left container
+        #index_left_container.column(style='width:12%; ')
+          #ILC_head(style='min-height: 60px;')
+            h1(style='color:#898faf; text-align:center;')  Interactive Story
+          #ILC_underline.underline
+            hr(width='100%', align='left')
+          #ILC_subhead
+            p(style='font-weight: bold;') Join Pengu and Pongu as they travel the world, exploring new environments!
+          #ILC_img
+            img(src='/images/japann.jpg', style='width: 100%; height: auto;')
+        // 12% padding
+        .column(style='width:12%')
+        // center container: 12% width
+        #index_center_container.column(style='width:12%; ')
+          #ICC_head(style='min-height: 60px;')
+            h1(style='color:#898faf; text-align:center;') Fitness Tracking
+          #ICC_underline.underline
+            hr(width='100%', align='left')
+          #ICC_subhead
+            p(style='font-weight: bold;') Easily log your meals and workouts in order to progress the story!
+          #ICC_img
+            img(src='/images/japann.jpg', style='width:100%; height: auto;')
+        // 12% padding
+        .column(style='width:12%')
+        // right container: 12% width
+        #index_right_container.column(style='width:12%;')
+          #IRC_head(style='min-height: 60px;')
+            h1(style='color:#898faf; text-align:center;') Themed Cosmetics
+          #IRC_underline.underline
+            hr(width='100%', align='left')
+          #IRC_subhead
+            p(style='font-weight: bold;') Meet your health goals to acquire reigon-specific cosmetics!
+          #IRC_img
+            img(src='/images/cosmetics.png', style='width:100%; height: auto;')
+        .column(style='width: 20%; position: relative')
+          div(style='position: absolute; bottom: 0;')
+            .wrapper
+              a(href='/alpha_access')
+                img#slide(src='/images/shop_alpha.png')
+      script.
+        /* Open when someone clicks on the span element */
+        var state="";
+        function echo(){
+        alert("hello");
+        }
+        function open_close_Nav(){
+        var width = document.getElementById("myNav").style.width;
+        if (width=="100%") {
+        document.getElementById("myNav").style.width = "0%";
+        }else {
+        document.getElementById("myNav").style.width = "100%";
+        }
+        }
+        function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+        }
+        /* Close when someone clicks on the "x" symbol inside the overlay */
+        function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+        }
+      script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+      script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN', crossorigin='anonymous')
+      script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV', crossorigin='anonymous')
